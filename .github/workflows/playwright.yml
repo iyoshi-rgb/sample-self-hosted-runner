@@ -29,7 +29,8 @@ jobs:
           https://api.github.com/repos/${{ github.repository }}/actions/runners/generate-jitconfig \
           -d '{"labels":["self-hosted","playwright"],"runner_group_id":0}')
         
-        echo "config=$(echo $RESPONSE | jq -r '.encoded_jit_config')" >> $GITHUB_OUTPUT
+        echo $RESPONSE
+          echo "config=$(echo $RESPONSE | jq -r '.encoded_jit_config')" >> $GITHUB_OUTPUT
 
     - uses: aws-actions/configure-aws-credentials@v5
       with:
