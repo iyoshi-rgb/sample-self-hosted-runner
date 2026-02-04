@@ -29,7 +29,11 @@ jobs:
           https://api.github.com/repos/${{ github.repository }}/actions/runners/generate-jitconfig \
           -d '{"name":"jit-${{ github.run_id }}","labels":["self-hosted","playwright"],"runner_group_id":0}')
         
-        echo "token length: ${{ steps.create_token.outputs.token }}" >&2
+        if [[ -z "${{ steps.create_token.outputs.token }}" ]]; then
+          echo "token is empty" >&2
+        else
+          echo "token is set" >&2
+        fi
           echo $RESPONSE
           echo "config=$(echo $RESPONSE | jq -r '.encoded_jit_config')" >> $GITHUB_OUTPUT
 
