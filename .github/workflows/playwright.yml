@@ -13,7 +13,7 @@ jobs:
   wake-up:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/create-github-token@v2
+    - uses: actions/create-github-app-token@v2
       id : create_token
       with:
         app_id: ${{ secrets.GITHUB_APP_ID }}
