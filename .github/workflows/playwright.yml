@@ -31,7 +31,7 @@ jobs:
               {
                 "name":"playwright",
                 "environment":[
-                  {"name":"GITHUB_REPOSITORY","value":"self-hosted-runner"},
+                  {"name":"GITHUB_REPOSITORY","value":"sample-self-hosted-runner"},
                   {"name":"PAT_TOKEN","value":"${{ secrets.GITHUB_TOKEN }}"}
                 ]
               }
