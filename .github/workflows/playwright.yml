@@ -4,8 +4,41 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
+permissions:
+  actions: write
+  contents: read
+
 jobs:
+  wake-up:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: aws-actions/configure-aws-credentials@v5
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-1
+
+    - name: Wake up self-hosted runner
+      run: |
+        aws ecs run-task \
+          --cluster self-hosted-runner \
+          --launch-type FARGATE \
+          --task-definition seif-hosted-runner:5 \
+          --network-configuration "awsvpcConfiguration={subnets=[subnet-0d240f9fc7f422172],securityGroups=[sg-0878f4858c5b45746],assignPublicIp=ENABLED}" \
+          --overrides '{
+            "containerOverrides":[
+              {
+                "name":"runner",
+                "environment":[
+                  {"name":"GITHUB_REPOSITORY","value":"self-hosted-runner"},
+                  {"name":"PAT_TOKEN","value":"${{ secrets.GITHUB_TOKEN }}"}
+                ]
+              }
+            ]
+          }'
   test:
+    needs: wake-up
     timeout-minutes: 60
     runs-on: self-hosted
     steps:
