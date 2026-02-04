@@ -28,7 +28,7 @@ jobs:
           --method POST \
           -H "Accept: application/vnd.github+json" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
-          /repos/OWNER/REPO/actions/runners/generate-jitconfig \
+          /repos/${{ github.repository }}/sample-self-hosted-runner/actions/runners/generate-jitconfig \
           --input - <<< '{
           "name": "New runner",
           "runner_group_id": 1,
