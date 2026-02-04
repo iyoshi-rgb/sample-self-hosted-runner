@@ -8,11 +8,10 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /actions-runner
 WORKDIR /actions-runner
 
-# GitHub Runner ダウンロード（最新）
-RUN RUNNER_VERSION=$(curl -s https://api.github.com/repos/actions/runner/releases/latest | jq -r '.tag_name' | sed 's/^v//') \
-  && curl -o actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz -L \
-    https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz \
-  && tar xzf ./actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz
+# GitHub Runner ダウンロード
+RUN curl -o actions-runner-linux-arm64-2.331.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.331.0/actions-runner-linux-arm64-2.331.0.tar.gz
+RUN echo "f5863a211241436186723159a111f352f25d5d22711639761ea24c98caef1a9a  actions-runner-linux-arm64-2.331.0.tar.gz" | shasum -a 256 -c
+RUN tar xzf ./actions-runner-linux-arm64-2.331.0.tar.gz
 
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh

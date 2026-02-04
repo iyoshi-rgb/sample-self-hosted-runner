@@ -1,6 +1,4 @@
 #!/bin/bash
 set -e
 
-./config.sh --jitconfig "${JIT_CONFIG}" --ephemeral --unattended
-
-./run.sh
+./run.sh --jitconfig "${JIT_CONFIG}"
