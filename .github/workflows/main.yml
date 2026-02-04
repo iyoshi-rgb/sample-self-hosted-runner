@@ -1,9 +1,0 @@
-name: echo-test
-
-on: [push]
-
-jobs:
-  log:
-    runs-on: self-hosted
-    steps:
-      - run: echo "Hello from self-hosted runner!"
