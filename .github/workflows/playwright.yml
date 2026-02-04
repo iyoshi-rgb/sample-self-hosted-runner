@@ -29,7 +29,7 @@ jobs:
           --overrides '{
             "containerOverrides":[
               {
-                "name":"runner",
+                "name":"seif-hosted-runner:5",
                 "environment":[
                   {"name":"GITHUB_REPOSITORY","value":"self-hosted-runner"},
                   {"name":"PAT_TOKEN","value":"${{ secrets.GITHUB_TOKEN }}"}
