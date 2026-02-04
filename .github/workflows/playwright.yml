@@ -42,7 +42,7 @@ jobs:
         aws ecs run-task \
           --cluster self-hosted-runner \
           --launch-type FARGATE \
-          --task-definition self-hosted-runner:2 \
+          --task-definition self-hosted-runner:3 \
           --network-configuration "awsvpcConfiguration={subnets=[subnet-0d240f9fc7f422172],securityGroups=[sg-0878f4858c5b45746],assignPublicIp=ENABLED}" \
           --overrides '{
             "containerOverrides":[
