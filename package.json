@@ -1,0 +1,22 @@
+{
+  "name": "sample-self-hosted-runner",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iyoshi-rgb/sample-self-hosted-runner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iyoshi-rgb/sample-self-hosted-runner/issues"
+  },
+  "homepage": "https://github.com/iyoshi-rgb/sample-self-hosted-runner#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.58.1",
+    "@types/node": "^25.2.0"
+  }
+}
