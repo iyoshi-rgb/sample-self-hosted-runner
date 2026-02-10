@@ -99,8 +99,8 @@ resource "aws_instance" "default" {
 
   user_data = templatefile("${path.module}/user_data.sh.tpl", {
     # TOKENを代入する
-    REGISTRATION_TOKEN = "BERLJWG5THYG36M64WYGRKLJQ3CVM"
-    REGISTRATION_TOKEN_2  = "BERLJWB7JMCBOSPMPT5SSJLJQ3CXG"
+    REGISTRATION_TOKEN = var.sample_self_hosted_runner_token,
+    NPM_REGISTRY_TOKEN  = var.npm_registry_token,
   })
 }
 
